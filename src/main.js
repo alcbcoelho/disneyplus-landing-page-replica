@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {      // evento disparado com o carregar de todos os elementos da página (excluindo término da renderização de imagens/vídeos)
     const buttons = document.querySelectorAll("[data-tab-button]");     // seleção de todos os elementos com o atributo 'data-tab-button'
+    const accordionQuestions = document.querySelectorAll("[data-faq-question]");
 
     buttons.forEach(b => {
         b.addEventListener("click", function({ target }) {
@@ -33,4 +34,10 @@ document.addEventListener("DOMContentLoaded", function() {      // evento dispar
             })
         })
     })
+
+    accordionQuestions.forEach(q => q.addEventListener("click", toggleAccordion));
+
+    function toggleAccordion(event) {
+        event.target.parentNode.classList.toggle("faq__questions__item--is-open");
+    }
 })
