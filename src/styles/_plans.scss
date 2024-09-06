@@ -6,13 +6,17 @@
     }
 
     .button {
-        margin-top: 28px;
+        margin-top: 24px;
     }
 
     &__list {
         display: flex;
         justify-content: space-around;
         margin-top: 50px;
+
+        @media screen and (max-width: 767px) {
+            display: block;
+        }
 
         &__item {
             text-align: center;

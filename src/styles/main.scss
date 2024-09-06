@@ -40,26 +40,50 @@
 
 .text--large {
     @include text-setup(18px);
+
+    @media screen and (max-width: 767px) {
+        @include text-setup(15px);
+    }
 }
 
 .text {
     @include text-setup();
+
+    @media screen and (max-width: 767px) {
+        @include text-setup(14px);
+    }
 }
 
 .text--small {
     @include text-setup(12px);
+
+    @media screen and (max-width: 767px) {
+        @include text-setup(11px);
+    }
 }
 
 .title--large {
     @include title-setup(44px);
+
+    @media screen and (max-width: 767px) {
+        @include title-setup(26px);
+    }
 }
 
 .title {
     @include title-setup();
+
+    @media screen and (max-width: 767px) {
+        @include title-setup(24px);
+    }
 }
 
 .title--small {
     @include title-setup(28px);
+
+    @media screen and (max-width: 767px) {
+        @include title-setup(22px);
+    }
 }
 
 .link-text {
@@ -118,6 +142,10 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
 
+    @media screen and (max-width: 767px) {
+        display: block;
+    }
+
     img {
         max-width: 100%;
     }
@@ -147,6 +175,12 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+
+            @media screen and (max-width: 767px) {
+                position: relative;
+                left: 0;
+                width: 100%;
+            }        
         }
     }
 }

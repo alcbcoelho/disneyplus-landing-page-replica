@@ -20,11 +20,21 @@
         &--is-active {
             display: grid;
         }
+
+        @media screen and (max-width: 767px) {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 
     &__tabs {
         display: flex;
         justify-content: center;
+
+        @media screen and (max-width: 767px) {
+            white-space: nowrap;    // força com que o espaçamento entre palavras não quebre linhas
+            overflow-y: scroll;
+            padding-left: 20px;
+        }
 
         &__button {
             @mixin generate-border-bottom($border-color: transparent) {
@@ -43,6 +53,10 @@
 
             &--is-active {
                 @include generate-border-bottom(vars.$color-text-secondary);
+            }
+
+            @media screen and (max-width: 767px) {
+                font-size: 16px;
             }
         }
     }
