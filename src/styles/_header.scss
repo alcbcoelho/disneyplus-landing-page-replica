@@ -1,0 +1,57 @@
+@use 'vars';
+
+@mixin set-opacity-transition() {
+    transition: opacity 0.5s;
+}
+
+@mixin set-bg-color-transition() {
+    transition: background-color 0.5s;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: vars.$color-background;
+    @include set-bg-color-transition();
+
+    &__container {
+        padding: 8px 36px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        margin: 5px;
+        max-width: 80px;
+        width: 100%;
+        @include set-opacity-transition();
+    }
+
+    &__links {
+        display: flex;
+
+        &__item {
+            margin: 5px;
+            @include set-opacity-transition();
+        }
+    }
+
+    &--is-hidden {
+        background-color: transparent;
+        @include set-bg-color-transition();
+
+        .header {
+            &__logo, &__links__item:first-child {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.5s;
+            }
+        }
+    }
+
+    .button {
+        height: 50px;
+    }
+}
