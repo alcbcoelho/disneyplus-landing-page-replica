@@ -5,6 +5,7 @@
 @use 'available-devices';
 @use 'faq';
 @use 'footer';
+@use 'header';
 
 @mixin text-setup($font-size: 16px) {
     font-size: $font-size;
@@ -34,6 +35,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Avenir, sans-serif;
+    list-style-type: none;
 }
 
 .text--large {
@@ -67,17 +69,47 @@
 }
 
 .button {
-    display: block;
+    @mixin set-bg-and-border-colors($color, $bg-opacity: 1) {
+        background-color: rgba($color, $bg-opacity);
+        border-color: $color;
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
     width: 100%;
     height: 60px;
     font-size: 18px;
     color: vars.$color-text-secondary;
-    background-color: #6421ff;
-    border: none;
-    text-transform: uppercase;
+    border: 1px solid;
+    @include set-bg-and-border-colors(vars.$color-button-primary);
     border-radius: 4px;
-    margin-top: 2vw;
-    margin-bottom: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: lighten(vars.$color-button-primary, 3%);
+    }
+    
+    &--secondary {
+        @include set-bg-and-border-colors(vars.$color-button-secondary);
+
+        &:hover {
+            background-color: lighten(vars.$color-button-secondary, 3%);
+        }
+    }
+    
+    &--dark {
+        background-color: rgba(vars.$color-button-dark, 0.8);
+        border-color: vars.$color-text-secondary;
+
+        &:hover {
+            background-color: vars.$color-text-secondary;
+            color: vars.$color-background;
+        }
+    }
 }
 
 .image-beside-text {

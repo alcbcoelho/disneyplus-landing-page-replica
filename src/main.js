@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", function() {      // evento dispar
     const buttons = document.querySelectorAll("[data-tab-button]");     // seleção de todos os elementos com o atributo 'data-tab-button'
     const accordionQuestions = document.querySelectorAll("[data-faq-question]");
 
+    const heroSection = document.querySelector(".hero");
+    const heroSectionHeight = heroSection.clientHeight;
+
+    window.addEventListener("scroll", () => {
+        if (scrollY < heroSection.clientHeight)     // essa lógica invertida, ao invés de checar se scrollY é maior que heroSection.clientHeight, é mais performática, pois a maioria da página está abaixo do hero e haveria mais código rodando desnecessariamente se a lógica fosse reversa
+            hideHeaderElements();
+        else
+            revealHeaderElements();
+    })
+
     buttons.forEach(b => {
         b.addEventListener("click", function({ target }) {
             const showLists = document.querySelectorAll("[data-tab-id]");
@@ -39,5 +49,17 @@ document.addEventListener("DOMContentLoaded", function() {      // evento dispar
 
     function toggleAccordion(event) {
         event.target.parentNode.classList.toggle("faq__questions__item--is-open");
+    }
+
+    function hideHeaderElements() {
+        const header = document.querySelector(".header");
+        
+        !header.classList.contains("header--is-hidden") && header.classList.add("header--is-hidden");
+    }
+
+    function revealHeaderElements() {
+        const header = document.querySelector(".header");
+        
+        header.classList.contains("header--is-hidden") && header.classList.remove("header--is-hidden");
     }
 })
